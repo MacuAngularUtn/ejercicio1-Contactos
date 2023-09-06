@@ -1,0 +1,30 @@
+
+<mat-card>
+    <mat-card-title>Contacto</mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="frmContacto" class="row">
+            <mat-form-field class="col">
+                <mat-label>Nombre</mat-label>
+                <input matInput id="nombre" formControlName="nombre">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="apellido">
+            </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="estoes@unejemplo.com" formControlName="email" required>
+                    <mat-error *ngIf="frmContacto.get('email')?.invalid">Ingrese un email válido</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput placeholder="45462121" formControlName="telefono" required>
+                    <mat-error *ngIf="frmContacto.get('telefono')?.invalid">Ingrese un teléfono válido</mat-error>
+                </mat-form-field>
+            <div class="btns">
+                <button mat-raised-button color="warn" type="button" [routerLink]="['/']" class="btn-margin">Cancelar</button>
+                <button mat-raised-button color="accent" type="submit" [disabled]="!frmContacto.valid">Aceptar</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
